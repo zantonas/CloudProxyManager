@@ -1,0 +1,117 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "Cloud Proxy",
+    "version": "0.1"
+  },
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/configs/{user}": {
+      "get": {
+        "operationId": "get_configs",
+        "summary": "Get configs",
+        "tags": [
+          "configs"
+        ],
+        "description": "Get configs associated with a user.\n",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "user",
+            "in": "path",
+            "required": true,
+            "description": "Name of the user",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200 response",
+            "examples": {
+              "application/json": "{'response':{'access_key':'AN_ACCESS_KEY','endpoint':'https://s3.eu-west-2.amazonaws.com','provider_type':'s3','user':'zantonas'}}"
+            }
+          }
+        }
+      },
+      "post": {
+        "operationId": "set_configs",
+        "summary": "Set configs",
+        "tags": [
+          "configs"
+        ],
+        "description": "Set configs of a user.\n",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "user",
+            "in": "path",
+            "required": true,
+            "description": "Name of the user",
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "payload",
+            "required": true,
+            "description": "The json payload",
+            "schema": {
+              "type": "object",
+              "required": ["access_key", "secret_key", "endpoint", "provider_type"],
+              "properties": {
+                "access_key": {"type": "string"},
+                "secret_key": {"type": "string"},
+                "endpoint": {"type": "string"},
+                "provider_type": {"type": "string"}
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200 response",
+            "examples": {
+              "text/plain": "<Response [200]>"
+            }
+          }
+        }
+      },
+      "delete": {
+        "operationId": "delete_configs",
+        "summary": "Delete configs",
+        "tags": [
+          "configs"
+        ],
+        "description": "Delete configs associated with a user.\n",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "user",
+            "in": "path",
+            "required": true,
+            "description": "Name of the user",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200 response",
+            "examples": {
+              "text/plain": "<Response [200]>"
+            }
+          }
+        }
+      }
+    }
+  }
+}
