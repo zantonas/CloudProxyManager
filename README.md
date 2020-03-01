@@ -7,4 +7,4 @@ CloudProxyManager provides a web interface for administrators to map end users t
 1. Execute app.py.  
 
 ## Examples ##
-* Refer to examples/examples.py for user examples.
+* Refer to example/examples.py for user examples.
