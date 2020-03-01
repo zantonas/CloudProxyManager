@@ -1,7 +1,7 @@
-from core.gateway.abstract_gateway import AbstractGateway
-from core import utils
-
 import redis
+
+from cloudproxymanager import utils
+from cloudproxymanager.gateway.abstract_gateway import AbstractGateway
 
 
 class RedisGateway(AbstractGateway):
@@ -27,8 +27,8 @@ class RedisGateway(AbstractGateway):
         try:
             credentials = self.r.get(user).decode('utf-8').split(',', 3)
             return credentials[0], credentials[2], credentials[3]
-        except Exception:
-            raise Exception('Key not found')
+        except Exception as ex:
+            raise Exception(ex)
 
     def set_storage_credentials(self, user, access_key, secret_key,
                                 endpoint, provider_type):

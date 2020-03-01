@@ -14,14 +14,14 @@ def load_swagger(app):
     Loads the swagger ui.
     """
     from flask_swagger_ui import get_swaggerui_blueprint
-    SWAGGER_URL = '/swagger'
-    API_URL = '/static/swagger.json'
-    SWAGGERUI_BLUEPRINT = get_swaggerui_blueprint(
-        SWAGGER_URL,
-        API_URL,
+    swagger_url = '/swagger'
+    api_url = '/static/swagger.json'
+    swaggerui_blueprint = get_swaggerui_blueprint(
+        swagger_url,
+        api_url,
         config={
             'app_name': "Cloud Proxy Gateway"
         }
     )
-    app.register_blueprint(SWAGGERUI_BLUEPRINT, url_prefix=SWAGGER_URL)
+    app.register_blueprint(swaggerui_blueprint, url_prefix=swagger_url)
 

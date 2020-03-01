@@ -1,9 +1,13 @@
-from flask import Flask, request, abort
-from core.gateway.redis_gateway import RedisGateway
-from core.constants import HTTP_GET, HTTP_PUT, HTTP_POST, HTTP_DELETE
-from core.utils import load_swagger
+from cloudproxymanager.constants import (HTTP_GET, HTTP_PUT,
+                                         HTTP_POST, HTTP_DELETE)
+from cloudproxymanager.gateway.redis_gateway import RedisGateway
+from flask import request, abort
+
+from flask import Flask
+from cloudproxymanager.utils import load_swagger
 
 app = Flask(__name__)
+load_swagger(app)
 
 
 @app.route('/configs/<string:user>/', methods=[HTTP_GET])
@@ -51,8 +55,3 @@ def delete_config(user):
     r = RedisGateway()
     r.delete_storage_credentials(user)
     return {'response': 200}
-
-
-if __name__ == '__main__':
-    load_swagger(app)
-    app.run(host='127.0.0.2', port=5000)

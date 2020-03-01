@@ -37,6 +37,12 @@
             "examples": {
               "application/json": "{'response':{'access_key':'AN_ACCESS_KEY','endpoint':'https://s3.eu-west-2.amazonaws.com','provider_type':'s3','user':'zantonas'}}"
             }
+          },
+          "404": {
+              "description": "404 response",
+              "examples": {
+                "application/json": "<Response [404]>"
+              }
           }
         }
       },
@@ -109,6 +115,12 @@
             "examples": {
               "text/plain": "<Response [200]>"
             }
+          },
+          "404": {
+              "description": "404 response",
+              "examples": {
+                "application/json": "<Response [200]>"
+              }
           }
         }
       }
